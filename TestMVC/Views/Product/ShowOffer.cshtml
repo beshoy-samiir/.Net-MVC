@@ -1,0 +1,10 @@
+﻿@model TestMVC.ViewModel.ProductOfferWithColorViewModel
+@{
+    ViewData["Title"] = "ShowOffer";
+}
+
+<h1>ShowOffer</h1>
+
+<div style="border:solid 6px @Model.Color">
+    @Model.Name
+</div>

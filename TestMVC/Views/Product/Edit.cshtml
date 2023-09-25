@@ -1,0 +1,49 @@
+﻿@model TestMVC.ViewModel.ProductWithCategoryListViewModel
+
+@{
+    ViewData["Title"] = "Edit Product";
+    SelectList catList = new SelectList(Model.Categories, "Id", "Name", Model.CatId);
+
+}
+
+<h1>Edit</h1>
+<form method="post" asp-action="SaveEdit" asp-controller="Product" asp-route-id="@Model.Id">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+
+    </div>
+    <div>
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+    </div>
+    <div>
+        <label asp-for="Image"></label>
+        <input asp-for="Image" class="form form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+
+    </div>
+    <div>
+        <label asp-for="CatId"></label>
+        <select asp-for="CatId" asp-items="catList"
+                class="form-control"></select>
+        <span asp-validation-for="CatId" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary" />
+    <input type="reset" value="Clear" class="btn btn-primary" />
+
+    <a href="/Product/ShowAll" class="btn btn-primary">Cancel</a>
+</form>
+<br />
+<br />
+<a asp-action="ShowAll" asp-controller="Product" asp-route-id="@Model.Id" asp-route-name="@Model.Name">Back To list</a>
+
+<partial name="_ValidationScriptsPartial" />
